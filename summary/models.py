@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Intro(models.Model):
-    image = models.ImageField(upload_to='foro/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True)
     position = models.CharField(max_length=250)
     intro = models.TextField(max_length=2500)
 

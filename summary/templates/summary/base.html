@@ -1,11 +1,152 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <h1>Hello!!</h1>
-</head>
-<body>
+<title>Резюме</title>
 
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+<meta charset="UTF-8">
+
+<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+.
+<!-- CSS only-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			<img src="headshot.jpg" alt="Roman Polosmak" />
+		</div>
+
+		<div id="name">
+			<h1 class="quickFade delayTwo">Роман Полосьмак</h1>
+			{% for intro in intros %}
+			<h5 class="quickFade delayThree">{{ intro.position }}</h5>
+			{% endfor %}
+		</div>
+
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				{% for contact in contacts %}
+				<li>{{ contact.name }}: <a href="mailto:joe@bloggs.com" target="_blank">{{ contact.information }}</a></li>
+
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Вступление</h1>
+				</div>
+
+				<div class="sectionContent">
+					{% for intr in intros %}
+					<p>{{ intr.intro }}</p>
+					{% endfor %}
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Опыт работы</h1>
+			</div>
+
+			<div class="sectionContent">
+				{% for work in works%}
+				<article>
+					<h2>{{ work.place }}</h2>
+					<h5>{{ work.position }}</h5>
+					<p class="subDetails">{{ work.date_start }} - {{ work.date_end }}</p>
+					<p>{{ work.duties }}</p>
+					<p class="subDetails">{{ work.instruments }}</p>
+				</article>
+				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		</section>
+
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Навыки</h1>
+			</div>
+
+			<div class="sectionContent">
+				<ul class="keySkills">
+					{% for skill in skills%}
+					<li>{{ skill.name }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Курсы</h1>
+			</div>
+
+			<div class="sectionContent">
+				<ul class="keySkills">
+					{% for course in courses%}
+					<li>{{ course.site }}</li>
+					<li>{{ course.specialization }}</li>
+					<br>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Образование</h1>
+			</div>
+
+			<div class="sectionContent">
+				{% for education in educations%}
+				<article>
+					<h2>{{ education.university }}</h2>
+					<h5>Факультет</h5>
+					<p class="subDetails">{{ education.date_start }} - {{ education.date_end }}</p>
+					<p>{{ education.specialization }}</p>
+				</article>
+				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		</section>
+
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3753241-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
 </body>
 </html>
