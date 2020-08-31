@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Intro(models.Model):
-    image = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True)
     position = models.CharField(max_length=250)
     intro = models.TextField(max_length=2500)
+    image = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
         return self.position
@@ -66,9 +66,9 @@ class Project(models.Model):
 
 
 class Message(models.Model):
-    company = models.CharField(max_length=250)
-    contact = models.CharField(max_length=250)
-    message = models.TextField(max_length=2000)
+    company = models.CharField(max_length=250, verbose_name="Ваша компания")
+    contact = models.CharField(max_length=250, verbose_name="Ваши контакты")
+    message = models.TextField(max_length=2000, verbose_name="Ваше сообщение")
 
     def __str__(self):
         return self.company

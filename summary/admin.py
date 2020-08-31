@@ -4,7 +4,7 @@ from .models import *
 
 @admin.register(Intro)
 class IntroAdmin(admin.ModelAdmin):
-    list_display = ['image', 'position', 'intro']
+    list_display = ['position', 'intro', 'image', ]
 
 
 @admin.register(Contact)

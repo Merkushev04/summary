@@ -27,24 +27,28 @@
 <div id="cv" class="instaFade">
 	<div class="mainDetails">
 		<div id="headshot" class="quickFade">
-			<img src="headshot.jpg" alt="Roman Polosmak" />
+			{% for intro in intros %}
+			<img src="{% static "images/profile.jpg" %}" alt="Roman Polosmak">
 		</div>
-
 		<div id="name">
 			<h1 class="quickFade delayTwo">Роман Полосьмак</h1>
-			{% for intro in intros %}
+
 			<h5 class="quickFade delayThree">{{ intro.position }}</h5>
 			{% endfor %}
-		</div>
-
-		<div id="contactDetails" class="quickFade delayFour">
-			<ul>
+			<br>
 				{% for contact in contacts %}
-				<li>{{ contact.name }}: <a href="mailto:joe@bloggs.com" target="_blank">{{ contact.information }}</a></li>
-
+				<p>{{ contact.name }}: {{ contact.information }}</p>
 				{% endfor %}
-			</ul>
 		</div>
+
+<!--		<div id="contactDetails" class="quickFade delayFour">-->
+<!--			<ul>-->
+<!--				{% for contact in contacts %}-->
+<!--				<li>{{ contact.name }}: <a href="mailto:joe@bloggs.com" target="_blank">{{ contact.information }}</a></li>-->
+
+<!--				{% endfor %}-->
+<!--			</ul>-->
+<!--		</div>-->
 
 		<div class="clear"></div>
 	</div>
@@ -53,7 +57,7 @@
 		<section>
 			<article>
 				<div class="sectionTitle">
-					<h1>Вступление</h1>
+					<h1>О себе</h1>
 				</div>
 
 				<div class="sectionContent">
@@ -77,9 +81,10 @@
 					<h2>{{ work.place }}</h2>
 					<h5>{{ work.position }}</h5>
 					<p class="subDetails">{{ work.date_start }} - {{ work.date_end }}</p>
-					<p>{{ work.duties }}</p>
+					<p><pre>{{ work.duties }}</pre></p>
 					<p class="subDetails">{{ work.instruments }}</p>
 				</article>
+				<br>
 				{% endfor %}
 			</div>
 			<div class="clear"></div>
@@ -107,13 +112,11 @@
 			</div>
 
 			<div class="sectionContent">
-				<ul class="keySkills">
+				<article>
 					{% for course in courses%}
-					<li>{{ course.site }}</li>
-					<li>{{ course.specialization }}</li>
-					<br>
+					<p><pre>{{ course.site }} - {{ course.specialization }}</pre></p>
 					{% endfor %}
-				</ul>
+				</article>
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -128,11 +131,33 @@
 				{% for education in educations%}
 				<article>
 					<h2>{{ education.university }}</h2>
-					<h5>Факультет</h5>
 					<p class="subDetails">{{ education.date_start }} - {{ education.date_end }}</p>
-					<p>{{ education.specialization }}</p>
+					<p>Факультет: {{ education.specialization }}</p>
 				</article>
+				<br>
 				{% endfor %}
+			</div>
+			<div class="clear"></div>
+		</section>
+
+		<section>
+			<div class="sectionTitle">
+				<h1>Написать мне</h1>
+			</div>
+
+			<div class="sectionContent">
+
+				<article>
+					<form action="." method="post" class="message">{% csrf_token %}
+						{{ form.as_table }}
+						<br>
+						<input type="submit" value="Отправить">
+					</form>
+
+
+				</article>
+				<br>
+
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -148,5 +173,6 @@ var pageTracker = _gat._getTracker("UA-3753241-1");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
+.
 </body>
 </html>
