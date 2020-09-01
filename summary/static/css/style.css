@@ -361,3 +361,27 @@ section:last-child {
     background: none;
     outline: none;
     border: 1px solid #F3EFEF;
+    }
+
+.field_class {
+background-color: red;
+text-color: red;
+
+}
+
+.sectionContent input {
+    width: 100%;
+}
+
+.sectionContent textarea {
+    width: 100%;
+}
+
+.sectionContent label {
+    display: block;
+    margin-top: 1.5rem;
+}
+
+.sectionContent pre {
+    color: #444;
+}

@@ -8,9 +8,7 @@ class MessageForm(forms.ModelForm):
         fields = ['company', 'contact', 'message',]
 
         widgets = {
-            'company': forms.TextInput(attrs={'size': 50}),
-            'contact': forms.TextInput(attrs={'size': 50}),
-            'message': forms.TextInput(attrs={'size': 50}),
+            'fields': forms.TextInput(attrs={'class': 'field_class'}),
         }
 
 
