@@ -369,6 +369,10 @@ text-color: red;
 
 }
 
+form.message {
+    margin-top: -1.5rem;
+}
+
 .sectionContent input {
     width: 100%;
 }
