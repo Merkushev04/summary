@@ -388,4 +388,5 @@ form.message {
 
 .sectionContent pre {
     color: #444;
+    white-space: break-spaces;
 }
